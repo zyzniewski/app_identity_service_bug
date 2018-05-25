@@ -1,0 +1,5 @@
+cron:
+- description: keep alive
+  url: /
+  schedule: every 5 minutes
+  target: buggy
