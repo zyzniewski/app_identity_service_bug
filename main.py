@@ -5,12 +5,6 @@ import google.cloud.storage
 
 import webapp2
 
-storage = google.cloud.storage.Client()
-bucket = storage.bucket(
-    '{}.appspot.com'.format(
-        app_identity.get_application_id(),
-    ),
-)
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -22,6 +16,13 @@ class MainHandler(webapp2.RequestHandler):
                 'https://www.googleapis.com/auth/devstorage.full_control',
                 'https://www.googleapis.com/auth/devstorage.read_only',
                 'https://www.googleapis.com/auth/devstorage.read_write',
+            ),
+        )
+
+        storage = google.cloud.storage.Client()
+        bucket = storage.bucket(
+            '{}.appspot.com'.format(
+                app_identity.get_application_id(),
             ),
         )
 
